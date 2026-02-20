@@ -1,0 +1,42 @@
+## 🖥️ How to Configure **Terraform** with Windows**
+
+Download the terraform file from the Official page for win ⬇️
+
+* ➡️ In system Click Env variables -> System variables -> Edit path
+
+---
+
+## ☁️ Configure with AWS
+
+Configure with **Amazon Web Services** by creating a User ➡️ create security key / ID ➡️ Press the command `aws configure` in windows [vs-code] 💻 and enter the details
+
+---
+
+## ❓ Why Terraform ?
+
+* ➡️ Terraform is widely used for Infrastructure as Code (IaC) because of its strong architecture and automation features. 🚀
+
+---
+
+## 🤔 we can create with Ansible , but why Terraform ?
+
+You can create infrastructure with **Ansible**, but:
+
+* ➡️ ansible can create duplicate resources , we cant manage the duplicate resources , it is good for configuration ⚙️
+
+* ➡️ Terraform maintains state files which stores the current state of the cloud , where ansible does'nt 📂
+
+* ➡️ Knows what to update or destroy 🔄
+
+* ➡️ Terraform builds automatic dependency graph  [ VPC → Subnet → EC2 → Security Group ] 🏗️
+
+  In ansible it will depends on the plays in written order
+  But in Terraform it automatically creates all the required dependencies
+
+* ➡️ WE can see what is going to create by `terraform plan` 👀
+
+* ➡️ Designed for create → update → destroy lifecycle 🔁
+
+  But ANsible we cant tear down fully
+
+* ➡️ we can use for multiple cloud providers [aws, GCP , ] ☁️🌍
