@@ -1,0 +1,33 @@
+------- COUNT----------
+
+- > Count indictaeds the number of resources wantes to replicate 
+
+____________________________________________________________________________________________________
+
+resource "aws_instance" "web" {
+  count         = 10
+  ami           = var.aws_region == "us-east-1" ? "ami-12345678" : "ami-87654321"
+  instance_type = "t3.micro"
+  tags = {
+    Name = "web-${count.index + 1}"
+  }
+}
+
+____________________________________________________________________________________________________
+
+if variable "region" {
+
+type list(string)
+
+region = ["us-east-1" "us-west-1"]
+}
+
+USAGE --->
+
+resource "aws_instance" "web" {
+  count         = 10
+
+  region = var.region[count.index]
+ 
+}
+
