@@ -1,0 +1,79 @@
+Variables in Terraform 
+
+We can create 
+- > variables.tf 
+- > terraform.tfvars (or *.tfvars
+- set vars , unset vars through command line 
+
+
+Format of variables 
+
+variable "AWS_AMI_ID_QA" {
+
+type = string
+default = {
+AMI = "xxxxxxxxxxxxxx"
+}
+}
+
+presidence of variables -> 
+
+Command-line flags (-var and -var-file)
+
+// terraform apply -var="region=us-west-2"
+
+Terraform environment variables (TF_VAR_name)
+
+export TF_VAR_region="us-east-2"
+
+.tfvars files (e.g., terraform.tfvars, dev.tfvars)
+
+// region = "us-east-1"
+
+.auto.tfvars files (loaded automatically)
+
+region = "us-west-1"
+
+Default values in variables.tf
+
+
+-------------------------------------------------------------------------------------------
+variable "region" {
+   type = string 
+  default = "us-west-1"
+}
+
+___________________________________________________________________________________________
+---List ---
+variable "availability_zones" {
+  type = list(string)
+  default = ["us-east-1a", "us-east-1b"]
+}
+
+__________________________________________________________________________________________
+
+A map in Terraform works like a key-value dictionary. You provide a key (in this case, the AWS region), and Terraform returns the corresponding value (the AMI ID).
+variable "ami_map" {
+variable "ami_map" {
+  type = map(string)
+  default = {
+    "us-east-1" = "ami-12345678"
+    "us-west-2" = "ami-87654321"
+  }
+}
+
+variable "aws_region" {
+  type    = string
+  default = "us-east-1"
+}
+
+USAGE 
+ami = var.ami_map[var.aws_region]
+
+_____________________________________________________________________________________
+
+
+
+How to use those variables 
+
+- > ami =  var.region 
